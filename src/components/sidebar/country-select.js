@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 
 import Select from "react-select";
 
@@ -10,6 +10,11 @@ export default function CountrySelect() {
 
     const [options, setOptions] = useState(null)
 
+    const queryState = useMemo(() => ({
+        queryName: "countries"
+    }), [])
+
+
     useEffect(() => {
         getAllCountries()
             .then(countries => {
@@ -18,7 +23,7 @@ export default function CountrySelect() {
             })
     }, [])
 
-    const [selectedOption, setSelectedOption] = useQueryState({ queryName: "countries" })
+    const [selectedOption, setSelectedOption] = useQueryState(queryState)
 
     return (
         <div className="country-select">

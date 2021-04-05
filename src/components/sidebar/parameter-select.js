@@ -23,7 +23,11 @@ export default function ParameterSelect() {
         []
     )
 
-    const [selectedOption, setSelectedOption] = useQueryState({ queryName: "categories", labelMapper: categoryLabelMapping })
+    const queryState = useMemo(() => ({
+        queryName: "categories", labelMapper: categoryLabelMapping
+    }), [])
+
+    const [selectedOption, setSelectedOption] = useQueryState(queryState)
 
     return (
         <div className="parameter-select">

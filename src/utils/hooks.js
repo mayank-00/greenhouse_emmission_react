@@ -32,7 +32,7 @@ export function useQueryState({ queryName, labelMapper }) {
                 setSelectedOption(options)
             }
         }
-    }, [])
+    }, [selectedOption, location.search, queryName, labelMapper])
 
     useEffect(() => {
 
@@ -46,7 +46,7 @@ export function useQueryState({ queryName, labelMapper }) {
 
         history.push({ search: params.toString() })
 
-    }, [selectedOption, history])
+    }, [selectedOption, history, location.search, queryName])
 
     return [selectedOption, setSelectedOption]
 }
